@@ -1,0 +1,70 @@
+﻿@using PersonalWeb.Models.Entity
+@using PersonalWeb.Helpers
+@model List<ProjectsDone>
+
+<div id="work" class="work">
+    <div class="container">
+        <div class="service-head text-center">
+            <h4>Ne Yaptık?</h4>
+            <h3><span>ÇALIŞMALARIMIZ</span></h3>
+            <span class="border one"></span>
+        </div>
+        <div class="time-main w3l-agile">
+
+            @foreach (var item in Model)
+            {
+                int say = 1;
+
+                if (say <= 5)
+                {
+                    say++;
+                <div class="col-md-6 year-info">
+                    <ul class="year">
+
+                        <li>
+                            <a href="#modal_projectsdetail" class="portfolio-link b-link-diagonal b-animate-go" data-toggle="modal" data-project-id="@item.Id">
+                                <img src="~/images/projectsdone/@item.ImageURL" width="160" height="170"    />
+                            </a>
+                        </li> <!--TODO : resim eklenecek-->
+                        <div class="clearfix"></div>
+                    </ul>
+                </div>
+                <ul class="col-md-6 timeline">
+                    <li style="margin-bottom:150px;margin-top:30px">
+                        <div class="timeline-badge info"><a href="/ProjeDetay/@SeoHelper.ToSeoUrl(item.ProjectName).ToLower()/@item.Id"><i class="glyphicon glyphicon-send" title="Detay"></i></a></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <a href="/ProjeDetay/@SeoHelper.ToSeoUrl(item.ProjectName).ToLower()/@item.Id"><h4 class="timeline-title">@item.ProjectName</h4></a>
+                            </div>
+                            <div class="timeline-body">
+                                <p>@Html.Raw(item.Description)</p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                }
+            }
+            <div class="clearfix"></div>
+            <h4 class="text-center"><a href="#" class="btn btn-warning">Tüm Projeler <span class="glyphicon glyphicon-hand-right"></span></a> </h4>
+        </div>
+    </div>
+</div>
+
+@Bootstrap.ModalPopup(id: "modal_projectsdetail")
+
+<script>
+
+    $(function () {
+
+        $('#modal_projectsdetail').on('show.bs.modal', function (e) {
+
+            var a = $(e.relatedTarget);
+            var proid = a.data("project-id");
+
+            $("#modal_projectsdetail_body").load("/Home/GetProjectsDoneDetail/" + proid);
+        })
+
+    })
+
+
+</script>

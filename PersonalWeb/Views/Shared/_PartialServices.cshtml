@@ -1,0 +1,97 @@
+﻿@using PersonalWeb.Models.Entity
+@using PersonalWeb.Models.DataContext
+@using PersonalWeb.Helpers
+
+@{
+    Repository<Services> repo = new Repository<Services>();
+}
+
+<div id="services" class="services">
+    <div class="container">
+        <div class="service-head one text-center ">
+            <h4>Ne Yapıyoruz?</h4>
+            <h3>HİZMETLER</h3>
+            <span class="border two"></span>
+        </div>
+        <!-- services-grids -->
+        <div class="wthree_about_right_grids w3l-agile">
+
+            @foreach (var item in repo.List())
+            {
+                if (item.Title == "Web Tabanlı Yazılım Projeleri")
+                {
+                    <div class="col-md-6 wthree_about_right_grid">
+                        <div class="col-xs-3 wthree_about_right_grid_left">
+                            <div class="hvr-rectangle-in">
+                                <i class="glyphicon glyphicon-gift"></i>
+                            </div>
+                        </div>
+                        <div class="col-xs-9 wthree_about_right_grid_right">
+                            <a href="/HizmetDetay/@SeoHelper.ToSeoUrl(item.Title).ToLower()/@item.Id"><h4>Web Tabanlı Yazılım Projeleri</h4></a>
+                            <p>@Html.Raw(item.Text.Substring(0, 350)) ...</p>
+                            <a href="/HizmetDetay/@SeoHelper.ToSeoUrl(item.Title).ToLower()/@item.Id"><h4 style="font-size:13px;">Devam ...</h4></a>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                }
+
+                if (item.Title == "Mobil Uygulamaları")
+                {
+                    <div class="col-md-6 wthree_about_right_grid">
+                        <div class="col-xs-3 wthree_about_right_grid_left">
+                            <div class="hvr-rectangle-in">
+                                <i class="glyphicon glyphicon-phone"></i>
+                            </div>
+                        </div>
+                        <div class="col-xs-9 wthree_about_right_grid_right">
+                            <a href="/HizmetDetay/@SeoHelper.ToSeoUrl(item.Title).ToLower()/@item.Id"><h4>Mobil Uygulamaları</h4></a>
+                            <p>@Html.Raw(item.Text.Substring(0, 350)) ...</p>
+                            <a href="/HizmetDetay/@SeoHelper.ToSeoUrl(item.Title).ToLower()/@item.Id"><h4 style="font-size:13px;">Devam ...</h4></a>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                }
+
+                if (item.Title == "Bilişim Danışmanlığı")
+                {
+                    <div class="col-md-6 wthree_about_right_grid">
+                        <div class="col-xs-3 wthree_about_right_grid_left">
+                            <div class="hvr-rectangle-in">
+                                <i class="glyphicon glyphicon-user"></i>
+                            </div>
+                        </div>
+                        <div class="col-xs-9 wthree_about_right_grid_right">
+                            <a href="/HizmetDetay/@SeoHelper.ToSeoUrl(item.Title).ToLower()/@item.Id"><h4>Bilişim Danışmanlığı</h4></a>
+                            <p>@Html.Raw(item.Text.Substring(0, 350)) ...</p>
+                            <a href="/HizmetDetay/@SeoHelper.ToSeoUrl(item.Title).ToLower()/@item.Id"><h4 style="font-size:13px;">Devam ...</h4></a>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                }
+
+                if (item.Title == "E-Ticaret Yazılımları")
+                {
+                    <div class="col-md-6 wthree_about_right_grid">
+                        <div class="col-xs-3 wthree_about_right_grid_left">
+                            <div class="hvr-rectangle-in">
+                                <i class="glyphicon glyphicon-shopping-cart"></i>
+                            </div>
+                        </div>
+                        <div class="col-xs-9 wthree_about_right_grid_right">
+                            <a href="/HizmetDetay/@SeoHelper.ToSeoUrl(item.Title).ToLower()/@item.Id">
+                                <h4>E-Ticaret Yazılımları</h4>
+                            </a>
+                            <p>@Html.Raw(item.Text.Substring(0, 350)) ...</p>
+                            <a href="/HizmetDetay/@SeoHelper.ToSeoUrl(item.Title).ToLower()/@item.Id"><h4 style="font-size:13px;">Devam ...</h4></a>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                }
+            }
+
+                <div class="clearfix"> </div>
+            </div>
+
+        <!-- services-grids -->
+    </div>
+</div>

@@ -1,0 +1,66 @@
+﻿@using PersonalWeb.Models.Entity
+@model List<ProjectsDone>
+
+@{
+    ViewBag.Title = "Yapılan Projeler";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="row">
+    <h2>@ViewBag.Title</h2>
+    <hr />
+</div>
+
+<a href="/ProjectsDone/Create" class="btn btn-default" style="margin-bottom:10px"><span class="glyphicon glyphicon-plus"></span>Yeni Kayıt</a>
+<table class="table table-striped table-advance table-hover table-bordered table-responsive">
+    <tr>
+        <th>Proje Adı</th>
+        <th>Hizmet</th>
+        <th>Müşteri</th>
+        <th>Kullanılan Teknolojiler</th>
+        <th>Resim</th>
+        <th>Açıklama</th>
+        <th>Proje Tarihi</th>
+        <th>Kayıt Tarihi</th>
+        <th>Güncelleme Tarihi</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.ProjectName</td>
+            <td>@item.Services.Title</td>
+            <td>@item.Customer</td>
+            <td>@item.Teknologies</td>
+            <td><img src="~/images/projectsdone/@item.ImageURL" width="200" height="200" class="img-responsive" /></td>
+            <td>@Html.Raw(item.Description)</td>
+            <td>@item.ProjectDoneDate</td>
+            <td>@item.CreatedOn</td>
+            <td>@item.ModifiedOn</td>
+            <td>
+                <div class="col-md-2 text-right">
+                    <div class="btn-group">
+                        <a class="btn dropdown-toggle btn-warning" data-toggle="dropdown" href="#">
+                            <span class="glyphicon glyphicon-cog">&nbsp;</span>
+                            Seçenekler
+                            <span class="icon-cog icon-white"></span><span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/ProjectsDone/Edit/@item.Id" title="Düzenle">
+                                    <span class="glyphicon glyphicon-edit">&nbsp;</span>Düzenle
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/ProjectsDone/Delete/@item.Id" title="Sil" onclick="return confirm('Projeyi silmek istediğinize emin misiniz?')">
+                                    <span class="glyphicon glyphicon-remove">&nbsp;</span>Sil
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    }
+</table>
+

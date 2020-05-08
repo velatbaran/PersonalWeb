@@ -1,0 +1,43 @@
+﻿@model PersonalWeb.Models.Entity.User
+
+@{
+    ViewBag.Title = "Profilim";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+        <div class="row">
+            <h2>@ViewBag.Title</h2>
+            <hr />
+        </div>
+
+        <table class="table table-striped table-advance table-hover table-bordered table-responsive" style="margin-top:15px">
+            <tr>
+                <th>AD</th>
+                <th>SOYAD</th>
+                <th>UNVAN</th>
+                <th>E-MAIL</th>
+                <th>ŞİFRE</th>
+                <th>GITHUB</th>
+                <th>RESİM</th>
+                <th>KAYIT TARİHİ</th>
+                <th>GÜNCELLEME TARİHİ</th>
+                <th>GÜNCELLE</th>
+            </tr>
+
+            <tr>
+                <td>@Model.Name</td>
+                <td>@Model.Surname</td>
+                <td>@Model.Degree</td>
+                <td>@Model.Email</td>
+                <td>@Model.Password</td>
+                <td>@Model.Github</td>
+                <td><img src="~/images/user/@Model.ImageURL" width="50" height="50" class="img-responsive" /></td>
+                <td>@Model.CreatedOn</td>
+                <td>@Model.ModifiedOn</td>
+                <td>
+                    <div class="btn-group">
+                        <a class="btn btn-warning" href="/Admin/EditProfile/@Model.Id">Güncelle</a>
+                    </div>
+                </td>
+            </tr>
+        </table>

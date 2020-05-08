@@ -1,0 +1,53 @@
+﻿@using PersonalWeb.Models.DataContext
+@using PersonalWeb.Models.Entity
+@using PersonalWeb.Helpers
+
+@model PersonalWeb.Models.Entity.ProjectsDone
+@{
+    ViewBag.Title = "Proje Detay";
+
+    int _id = 0;
+    Repository<ProjectsDone> repo = new Repository<ProjectsDone>();
+    _id = Model.Id;
+}
+
+<div class="row" style="padding:50px">
+
+    <div class="row">
+        <div class="col-md-6">
+            <img src="~/images/projectsdone/@Model.ImageURL" width="900" height="650" />
+        </div>
+
+        <div class="col-md-6 alert alert-warning" role="alert">
+            <h1 class="text-center">Proje Detay</h1><br />
+            <strong style="font-size:30px">Proje Adı => </strong><span style="font-size:30px">@Model.ProjectName</span><br /><br />
+            <strong style="font-size:30px">Müşteri => </strong> <span style="font-size:30px">@Model.Customer</span><br /><br />
+            <strong style="font-size:30px">Hizmet => </strong> <span style="font-size:30px">@Model.Services.Title</span><br /><br />
+            <strong style="font-size:30px">Kullanılan Teknolojiler => </strong> <span style="font-size:30px">@Model.Teknologies</span><br /><br />
+            <strong style="font-size:30px">Proje Tarihi => </strong> <span style="font-size:30px">@Model.ProjectDoneDate</span><br /><br />
+            <strong style="font-size:30px">Proje Açıklaması =>  </strong><span style="font-size:30px">@Html.Raw(Model.Description)</span><br />
+
+        </div>
+    </div>
+
+    <div class="row" style="margin-top:100px">
+        <h1 class="text-center">Diğer Projeler</h1>
+        <hr />
+    </div>
+
+    <div class="row" style="margin-top:50px">
+
+        @foreach (var item in repo.List())
+        {
+            if (item.Id != _id)
+            {
+                <div class="col-md-4">
+                    <a href="/ProjeDetay/@SeoHelper.ToSeoUrl(item.ProjectName).ToLower()/@item.Id"> <img src="~/images/projectsdone/@item.ImageURL" width="500" height="250" title="Detay"/></a>
+                </div>
+            }
+        }
+
+    </div>
+
+</div>
+

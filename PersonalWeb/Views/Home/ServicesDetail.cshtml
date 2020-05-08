@@ -1,0 +1,40 @@
+﻿@using PersonalWeb.Models.Entity
+@using PersonalWeb.Models.DataContext
+@using PersonalWeb.Helpers
+@model PersonalWeb.Models.Entity.Services
+@{
+    ViewBag.Title = "Hizmet Detay";
+    Repository<Services> repo = new Repository<Services>();
+}
+
+<div class="row" style="padding:50px;">
+
+    <div class="row">
+
+        <div class="col-md-9">
+            <div>
+                <img src="~/images/services/@Model.ImageURL" class="img-responsive" width="1000" height="700" />
+            </div>
+            <div style="margin-top:40px">
+                <h3 style="margin-bottom:10px" class="text-center"><a href="">@Model.Title</a></h3>
+                <p class="text-justify" style="font-size:18px;">
+                    @Html.Raw(Model.Text)
+                </p>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="list-group list-group-flush">
+                <a class="list-group-item d-flex justify-content-between align-items-center active">Hizmetlerimiz</a>
+                @foreach (Services item in repo.List())
+                {
+                    <a href="/HizmetDetay/@SeoHelper.ToSeoUrl(item.Title).ToLower()/@item.Id" class="list-group-item list-group-item-action">
+                        @item.Title
+                        <span class="badge badge-primary badge-pill">*</span>
+                    </a>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,31 @@
+﻿@model PersonalWeb.Models.Entity.About
+
+@{
+    ViewBag.Title = "Hakkimizda";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+    <div class="row">
+        <h2>@ViewBag.Title</h2>
+        <hr />
+    </div>   
+
+<table class="table table-striped table-advance table-hover table-bordered table-responsive">
+    <tr>
+        <th>Açıklama</th>
+        <th>Resim</th>
+        <th>Kayıt Tarihi</th>
+        <th>Güncelleme Tarihi</th>
+        <th>İşlem</th>
+    </tr>
+
+    <tr>
+        <td>@Html.Raw(Model.Text)</td>
+        <td><img src="~/images/about/@Model.ImageURL" width="200" height="200" class="img-responsive" /></td>
+        <td>@Model.CreatedOn</td>
+        <td>@Model.ModifiedOn</td>
+        <td><a href="/About/Edit/@Model.Id" class="btn btn-success"><span class="glyphicon glyphicon-edit"></span>Güncelle</a></td>
+    </tr>
+</table>
+
+

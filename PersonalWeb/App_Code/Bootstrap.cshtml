@@ -1,0 +1,22 @@
+﻿@helper ModalPopup(string id="MyModal")
+{
+    <!--Modal Popup-->
+    <div class="portfolio-modal modal fade slideanim" id="@id" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content port-modal">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl"></div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2 text-center">
+                        <div class="modal-body" id="@(id+"_body")">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}

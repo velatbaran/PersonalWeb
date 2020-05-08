@@ -1,0 +1,27 @@
+﻿@using PersonalWeb.Models.Entity
+@using PersonalWeb.Models.DataContext
+@{ 
+    Repository<About> repo = new Repository<About>();
+    About about = repo.FirstData();
+}
+    <div id="about" class="about">
+        <div class="col-md-6 about-left">
+            <div id="owl-demo1" class="owl-carousel owl-carousel2">
+                <div class="item">
+                    <div class="about-left-grid">
+                        <h2><span>Hakkımızda</span></h2>
+                        <p class="text-justify">@Html.Raw(about.Text)</p>
+                        <ul>
+                            <li><a class="a-btn-a scroll" href="#work">Çalışmalarım</a></li>
+                            <li><a class="a-btn-h scroll" href="#contact">İletişime Geç</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-md-6 about-right">
+            <img src="~/images/about/@about.ImageURL" height="580" width="1100" />
+        </div>
+        <div class="clearfix"> </div>
+    </div>

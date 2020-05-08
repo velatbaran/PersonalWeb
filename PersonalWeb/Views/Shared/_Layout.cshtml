@@ -1,0 +1,200 @@
+﻿
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>WBSoftware| Anasayfa</title>
+    <link href="~/Content/SiteTemplate/css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="~/Content/SiteTemplate/js/jquery.min.js"></script>
+    <!-- Custom Theme files -->
+    <link href="~/Content/SiteTemplate/css/style.css" rel='stylesheet' type='text/css' />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <!-- Custom Theme files -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="WBSoftware, Mssql, Mvc5, Asp.Net, PersonalWeb, Bootstrap, Entity Framework,LinQ,Jquery,Javascript" />
+
+    <!-- Favicons -->
+    <link href="~/images/logo/logo.png" rel="icon">
+    <link href="~/images/logo/logo.png" rel="apple-touch-icon">
+
+    <!-- webfonts -->
+    <link href='http://fonts.googleapis.com/css?family=Asap:400,700,400italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600' rel='stylesheet' type='text/css'>
+    <!-- webfonts -->
+    <!---- start-smoth-scrolling---->
+    <script type="text/javascript" src="~/Content/SiteTemplate/js/move-top.js"></script>
+    <script type="text/javascript" src="~/Content/SiteTemplate/js/easing.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+            });
+        });
+    </script>
+    <!---- start-smoth-scrolling---->
+</head>
+<body>
+    <!-- container -->
+    <!-- header -->
+    <div id="home" class="header">
+        <div class="container">
+            <!-- top-hedader -->
+            <div class="top-header">
+                <!-- /logo -->
+                <!--top-nav---->
+                <div class="top-nav">
+                    <div class="navigation">
+                        <div class="logo">
+                            <h1><a href="/Anasayfa"><span>WB</span>SOFTWARE</a></h1>
+                        </div>
+                        <div class="navigation-right">
+                            <span class="menu"><img src="~/Content/SiteTemplate/images/menu.png" alt=" " /></span>
+                            <nav class="link-effect-3" id="link-effect-3">
+                                <ul class="nav1 nav nav-wil">
+                                    <li class="active"><a data-hover="Anasayfa" href="/Anasayfa">Anasayfa</a></li>
+                                    <li><a class="scroll" data-hover="Hakkımızda" href="#about">Hakkımızda</a></li>
+                                    <li><a class="scroll" data-hover="Hizmetler" href="#services">Hizmetler</a></li>
+                                    <li><a class="scroll" data-hover="Çalışmalar" href="#work">Çalışmalar</a></li>
+                                    @*<li><a class="scroll" data-hover="Galeri" href="#port">Galeri</a></li>*@
+                                    @*<li><a class="scroll" data-hover="Blog" href="#blogs">Blog</a></li>*@
+                                    <li><a class="scroll" data-hover="İletişim" href="#contact">İletişim</a></li>
+                                </ul>
+                            </nav>
+                            <!-- script-for-menu -->
+                            <script>
+                                $("span.menu").click(function () {
+                                    $("ul.nav1").slideToggle(300, function () {
+                                        // Animation complete.
+                                    });
+                                });
+                            </script>
+                            <!-- /script-for-menu -->
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <!-- /top-hedader -->
+                </div>
+                <div class="banner-info">
+                    <div class="col-md-7 header-right">
+                        <h1>Merhaba</h1>
+                        <h6>WBSoftware</h6>
+                        <ul class="address">
+
+                            <li>
+                                <ul class="address-text">
+                                    <li><b>AD</b></li>
+                                    <li>@ViewBag.UserData.Name</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul class="address-text">
+                                    <li><b>SOYAD</b></li>
+                                    <li>@ViewBag.UserData.Surname</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul class="address-text">
+                                    <li><b>TELEFON</b></li>
+                                    <li>@ViewBag.Contact.Phone</li>
+                                </ul>
+                            </li>                           
+                            <li>
+                                <ul class="address-text">
+                                    <li><b>UNVAN </b></li>
+                                    <li>@ViewBag.UserData.Degree</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul class="address-text">
+                                    <li><b>E-MAIL </b></li>
+                                    <li><a href="mailto:{@ViewBag.UserData.Email}">@ViewBag.UserData.Email</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul class="address-text">
+                                    <li><b>GITHUB </b></li>
+                                    <li>@ViewBag.UserData.Github</li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="col-md-5 header-left">
+                        <img src="~/images/user/@ViewBag.UserData.ImageURL" alt="">
+                    </div>
+                    <div class="clearfix"> </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @RenderBody()
+
+    <!-- /header -->
+    <div class="footer" id="contact">
+        <div class="container">
+            <div class="service-head one text-center">
+                <h4>Bana Ulaşın</h4>
+                <h3>BENİMLE İRTİBATA GEÇİN</h3>
+                <span class="border two"></span>
+            </div>
+            <div class="mail_us">
+                <div class="col-md-5 mail_left">
+                    <div class="contact-grid1-left">
+                        <div class="contact-grid1-left1">
+                            <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+                            <h4>E-Mail</h4>
+                            <ul>
+                                <li><h4><a href="mailto:{@ViewBag.Contact.Email}">@ViewBag.Contact.Email</a></h4></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="contact-grid1-left">
+                        <div class="contact-grid1-left1">
+                            <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
+                            <h4>Telefon</h4>
+                            <ul>
+                                <li><h4>@ViewBag.Contact.Phone</h4></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="contact-grid1-left">
+                        <div class="contact-grid1-left1">
+                            <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+                            <h4>Adres</h4>
+                            <ul>
+                                <li><h4>@ViewBag.Contact.Adressess</h4></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+
+                @Html.Partial("_PartialContactingClients")
+
+                <div class="clearfix"></div>
+            </div>
+            <div class="copy_right text-center">
+                <p>&copy; @DateTime.Now.Year WBSoftware . Tüm Hakları Saklıdır | Bilgisayar Mühendisi <a href="" target="_blank">Welat BARAN</a>tarafından hazırlandı.</p>
+                <ul class="social-icons two">
+                    <li><a href="@ViewBag.Contact.Twitter" target="_blank"></a></li>
+                    <li><a href="@ViewBag.Contact.Facebook" class="fb" target="_blank"> </a></li>
+                    <li><a href="#" class="in" target="_blank"> </a></li>
+                    <li><a href="#" class="dott"> </a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- //footer -->
+    <!-- /container -->
+    <a href="#home" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+    <!-- //for bootstrap working -->
+    <script src="~/Content/SiteTemplate/js/bootstrap.js"></script>
+
+
+</body>
+</html>
+

@@ -1,0 +1,58 @@
+﻿@using PersonalWeb.Models.Entity
+@model IEnumerable<Services>
+
+@{
+    ViewBag.Title = "Hizmetler";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="row">
+    <h2>@ViewBag.Title</h2>
+    <hr />
+</div>
+
+<a href="/Services/Create" class="btn btn-primary" style="margin-bottom:10px"><span class="glyphicon glyphicon-plus"></span>Yeni Kayıt</a>
+<table class="table table-striped table-advance table-hover table-bordered table-responsive">
+    <tr>
+        <th>Başlık</th>
+        <th>Açıklama</th>
+        <th>Resim</th>
+        <th>Kayıt Tarihi</th>
+        <th>Güncelleme Tarihi</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Title</td>
+            <td>@Html.Raw(item.Text)</td>
+            <td><img src="~/images/services/@item.ImageURL" width="200" height="200" class="img-responsive" /></td>
+            <td>@item.CreatedOn</td>
+            <td>@item.ModifiedOn</td>
+            <td>
+                <div class="col-md-2 text-right">
+                    <div class="btn-group">
+                        <a class="btn dropdown-toggle btn-success" data-toggle="dropdown" href="#">
+                            <span class="glyphicon glyphicon-cog">&nbsp;</span>
+                            Seçenekler
+                            <span class="icon-cog icon-white"></span><span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="/Services/Edit/@item.Id" title="Düzenle">
+                                    <span class="glyphicon glyphicon-edit">&nbsp;</span>Düzenle
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/Services/Delete/@item.Id" title="Sil" onclick="return confirm('Hizmeti silmek istediğinize emin misiniz?')">
+                                    <span class="glyphicon glyphicon-remove">&nbsp;</span>Sil
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    }
+</table>
+

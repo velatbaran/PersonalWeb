@@ -1,0 +1,87 @@
+﻿@model PersonalWeb.Models.Entity.Contact
+
+@{
+    ViewBag.Title = "Iletisim Guncelleme";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<link href="~/Content/validation-summary.css" rel="stylesheet" />
+
+    <div class="row">
+        <h2>@ViewBag.Title</h2>
+        <hr />
+    </div>
+
+    @using (Html.BeginForm("Edit", "Contact", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+
+            @Html.ValidationSummary(false)
+            @Html.HiddenFor(model => model.Id)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Adressess, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Adressess, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Phone, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Instagram, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Instagram, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Twitter, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Twitter, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Telegram, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Telegram, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Youtube, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Youtube, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Facebook, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Facebook, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-10 col-md-offset-1">
+                    <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-edit"></span>Güncelle</button>
+                    <a href="/yonetimpaneli/iletisim" class="btn btn-default"><span class="glyphicon glyphicon-circle-arrow-left"></span>İptal</a>
+                </div>
+            </div>
+        </div>
+    }

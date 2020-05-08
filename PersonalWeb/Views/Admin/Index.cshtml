@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="main-page">
+    <div class="col_3">
+        <div class="col-md-3 widget widget1">
+            <div class="r3_counter_box">
+                <a href="/yonetimpaneli/hizmetler"><i class="pull-left fa fa-server icon-rounded"></i></a>
+                <div class="stats">
+                    <h5><strong>@ViewBag.ServicesCount</strong></h5>
+                    <span>Hizmet Alanı</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 widget widget1">
+            <div class="r3_counter_box">
+                <a href="/yonetimpaneli/yapilanprojeler"><i class="pull-left fa fa-laptop user1 icon-rounded"></i></a>
+                <div class="stats">
+                    <h5><strong>@ViewBag.ProjectsDoneCount</strong></h5>
+                    <span>Yapılan Projeler</span>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"> </div>
+    </div>
+</div>
+

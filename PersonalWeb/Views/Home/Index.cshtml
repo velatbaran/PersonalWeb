@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<!-- about -->
+@Html.Partial("_PartialAbout")
+<!-- /about -->
+<!-- services -->
+@Html.Partial("_PartialServices")
+<!-- services -->
+<!--work-experience-->
+@{ 
+    Html.RenderAction("_PartialProjectsDone", "Home");
+}
+<!--//work-experience-->
+<!-- /blog-pop-->

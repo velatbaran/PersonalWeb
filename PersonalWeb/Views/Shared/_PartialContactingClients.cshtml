@@ -1,0 +1,52 @@
+﻿
+<div class="col-md-5 col-md-offset-1 mail_right">
+    <form>
+        *<input type="text" id="name" class="form-control" placeholder="Adınız...">
+        *<input type="email" id="email" class="form-control" placeholder="Email adresiniz...">
+        <input type="text" id="phone" class="form-control" placeholder="Telefonunuz...">
+        *<textarea id="message" class="form-control">Mesajınız...</textarea>
+        <input type="submit" value="Gönder" id="gonder">
+    </form>
+</div>
+
+<script src="~/Scripts/jquery-3.0.0.js"></script>
+<script>
+    $(function () {
+
+        $("#gonder").click(function () {
+
+            var n = $("#name").val();
+            var e = $("#email").val();
+            var p = $("#phone").val();
+            var m = $("#message").val();
+
+            console.log(n);
+            console.log(e);
+            console.log(p);
+            console.log(m);
+
+            $.ajax({
+
+                method: "POST",
+                url: "/Home/ContactingClients/",
+                data: { name: n, email: e, phone: p, message: m }
+
+            }).done(function (data) {
+
+                if (!data.hasError) {
+                    alert(data.Message);
+                }
+                else {
+                    alert(data.Message);
+                }
+
+            }).fail(function () {
+                alert("Sunucu ile bağlantı kurulamadı.");
+            });
+
+        })
+
+    })
+
+
+</script>
